@@ -4,7 +4,8 @@ class Airport
               :name
 
   def initialize(data)
-    @id = data[:id]
+    # require 'pry'; binding.pry
+    # @id = data[:id].to_i
     @type = 'airport'
     @name = data[:name]
   end
