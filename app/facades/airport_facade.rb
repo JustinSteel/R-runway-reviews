@@ -1,9 +1,10 @@
 class AirportFacade
   def self.airports
-    service = AirportService.new
-    service.airports.map do |airport_data|
-      require 'pry'; binding.pry
-      Airport.new(airport_data)
+    airports = []
+    AirportService.airports.each do |airport_data|
+      airport = Airport.new(airport_data)
+      airports << airport
     end
+    airports
   end
 end
