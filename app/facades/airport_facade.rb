@@ -1,7 +1,10 @@
 class AirportFacade
   def self.airports
-    AirportService.airports.map do |airport_data|
-      Airport.new(airport_data)
+    airports = []
+    AirportService.airports.each do |airport_data|
+      airport = Airport.new(airport_data)
+      airports << airport
     end
+    airports
   end
 end

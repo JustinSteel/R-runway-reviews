@@ -1,6 +1,6 @@
 class AirportService
   def self.airports
-    get_url("/v1/airports?country=US")
+    get_url("/v1/airports?country=us")
   end
 
   def self.get_url(url)
