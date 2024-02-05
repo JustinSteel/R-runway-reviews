@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Api::V1::ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show update destroy ]
   before_action :get_user, only: %i[ index show create destroy ]
 
