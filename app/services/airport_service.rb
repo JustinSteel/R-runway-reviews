@@ -10,7 +10,7 @@ class AirportService
 
   def conn
     Faraday.new(url: "https://api.api-ninjas.com") do |faraday|
-      faraday.params["api_key"] = Rails.application.credentials.airportkey[:key]
+      faraday.headers["X-Api-Key"] = Rails.application.credentials.airportkey[:key]
     end
   end
 end
