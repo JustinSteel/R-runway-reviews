@@ -1,16 +1,9 @@
 class Airport
-  attr_reader :icao,
-              :name,
-              :city,
-              :country
+  attr_accessor :name,
+                :id
 
   def initialize(data)
-    # require 'pry'; binding.pry
-    # @id = data[:id].to_i
-    # @type = 'airport'
     @name = data[:name]
-    @icao = data[:icao]
-    @city = data[:city]
-    @country = data[:country]
+    @id = data[:id]
   end
 end

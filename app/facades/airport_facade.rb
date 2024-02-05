@@ -1,9 +1,10 @@
 class AirportFacade
+
   def self.airports
     airports = []
-    AirportService.airports.each do |airport_data|
-      airport = Airport.new(airport_data)
-      airports << airport
+    all_airports = AirportService.airports
+    all_airports.each_with_index do |airport_data, index|
+      airports << Airport.new(id: index + 1, name: airport_data[:name])
     end
     airports
   end

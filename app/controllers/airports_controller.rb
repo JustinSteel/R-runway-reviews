@@ -1,6 +1,6 @@
 class AirportsController < ApplicationController
   def index
     @airports = AirportFacade.airports
-    require 'pry'; binding.pry
+    render json: @airports
   end
 end
