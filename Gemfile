@@ -36,6 +36,7 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 gem "factory_bot_rails"
 gem "faker"
+gem "jsonapi-serializer"
 
 gem "faraday"
 group :development, :test do
@@ -44,7 +45,6 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
   gem "launchy"
-  gem "jsonapi-serializer"
   gem "orderly"
 end
 
