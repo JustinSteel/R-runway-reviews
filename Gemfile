@@ -42,7 +42,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
   gem "launchy"
-  gem "jsonapi-serializers"
+  gem "jsonapi-serializer"
   gem "factory_bot_rails"
   gem "faker"
   gem "orderly"

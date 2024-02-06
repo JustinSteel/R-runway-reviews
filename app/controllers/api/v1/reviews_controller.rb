@@ -2,22 +2,15 @@ class Api::V1::ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show update destroy ]
   before_action :get_user, only: %i[ index show create destroy ]
 
-  # GET /reviews
+  # GET /api/v1/reviews
   def index
-    @user = User.find(params[:user_id])
-      if params[:user_id].present?
-        @ureviews = @user.reviews
-        render ReviewSerializer.new(@ureviews)
-      else
-        @reviews = Review.all
-        render ReviewSerializer.new(@reviews)
-      end
-
+    @reviews = @user.reviews
+    render json: ReviewSerializer.new(@reviews)
   end
 
   # GET /api/v1/users/:user_id/reviews/:id
   def show
-    render ReviewSerializer.new(@review)
+    render json: ReviewSerializer.new(@review)
   end
 
   # POST /api/v1/users/:user_id/reviews
@@ -25,9 +18,9 @@ class Api::V1::ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save
-      render ReviewSerializer.new(@review), status: :created, location: @review
+      render json: ReviewSerializer.new(@review), status: :created
     else
-      render ErrorSerializer.new(@review.errors), status: :unprocessable_entity
+      render json: ErrorSerializer.new(@review.errors), status: :unprocessable_entity
     end
   end
 
@@ -43,6 +36,7 @@ class Api::V1::ReviewsController < ApplicationController
   # DELETE /api/v1/users/:user_id/reviews/:id
   def destroy
     @review.destroy!
+    render json: { message: "Review deleted" }
   end
 
   private

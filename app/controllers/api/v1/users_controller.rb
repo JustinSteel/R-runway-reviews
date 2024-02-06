@@ -5,12 +5,12 @@ class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
 
-    render UserSerializer.new(@users)
+    render json: UserSerializer.new(@users)
   end
 
   # GET /users/1
   def show
-    render UserSerializer.new(@user)
+    render json: UserSerializer.new(@user)
   end
 
   # POST /users
@@ -18,9 +18,9 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render UserSerializer.new(@user), status: :created, location: @user
+      render json: UserSerializer.new(@user), status: :created
     else
-      render ErrorSerializer.new(@user.errors), status: :unprocessable_entity
+      render json: ErrorSerializer.new(@user.errors), status: :unprocessable_entity
     end
   end
 
@@ -46,6 +46,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_digest)
+      params.require(:user).permit(:username, :email, :password)
     end
 end

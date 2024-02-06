@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+include FactoryBot::Syntax::Methods
+
+create_list(:user, 5)
+create_list(:review, 20)
