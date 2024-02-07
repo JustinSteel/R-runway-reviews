@@ -1,10 +1,10 @@
 class Api::V1::ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show update destroy ]
-  before_action :get_user, only: %i[ index show create destroy ]
+  before_action :get_user, only: %i[ show create destroy ]
 
   # GET /api/v1/reviews
   def index
-    @reviews = @user.reviews
+    @reviews = Review.all
     render json: ReviewSerializer.new(@reviews)
   end
 
