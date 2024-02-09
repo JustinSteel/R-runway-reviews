@@ -15,6 +15,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   # POST /api/v1/users/:user_id/reviews
   def create
+    require 'pry'; binding.pry
     @review = Review.new(review_params)
 
     if @review.save
@@ -46,7 +47,12 @@ class Api::V1::ReviewsController < ApplicationController
     end
 
     def get_user
-      @user = User.find(params[:user_id])
+      # require 'pry'; binding.pry
+      if params[:user_id].nil?
+        @user = User.find(params["data"].first["attributes"]["user_id"])
+      else
+        @user = User.find(params[:user_id])
+      end
     end
 
     # Only allow a list of trusted parameters through.

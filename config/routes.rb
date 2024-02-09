@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users do
-        resources :reviews, only: %i[ show create destroy ]
+        resources :reviews
       end
       get '/reviews', to: 'reviews#index'
+      post '/reviews', to: 'reviews#create'
     end
   end
   get '/airports', to: 'airports#index'
