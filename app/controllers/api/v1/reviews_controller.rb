@@ -46,11 +46,11 @@ class Api::V1::ReviewsController < ApplicationController
     end
 
     def get_user
-      # require 'pry'; binding.pry
-      if params[:user_id].nil?
-        @user = User.find(params["data"]["attributes"]["user_id"])
-      else
-        @user = User.find(params[:user_id])
+      if params[:user_id].present?
+        @user = User.find_by(id: params[:user_id])
+      elsif params[:data].present? && params[:data].is_a?(Array)
+        user_id = params[:data].dig(0, :attributes, :user_id)
+        @user = User.find_by(id: user_id) if user_id.present?
       end
     end
 
