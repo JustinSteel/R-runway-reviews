@@ -15,7 +15,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   # POST /api/v1/users/:user_id/reviews
   def create
-    require 'pry'; binding.pry
     @review = Review.new(review_params)
 
     if @review.save
@@ -49,7 +48,7 @@ class Api::V1::ReviewsController < ApplicationController
     def get_user
       # require 'pry'; binding.pry
       if params[:user_id].nil?
-        @user = User.find(params["data"].first["attributes"]["user_id"])
+        @user = User.find(params["data"]["attributes"]["user_id"])
       else
         @user = User.find(params[:user_id])
       end
