@@ -1,10 +1,10 @@
 class Api::V1::ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show update destroy ]
-  before_action :get_user, only: %i[ index show create destroy ]
+  before_action :get_user, only: %i[ show create destroy ]
 
   # GET /api/v1/reviews
   def index
-    @reviews = @user.reviews
+    @reviews = Review.all
     render json: ReviewSerializer.new(@reviews)
   end
 
@@ -46,7 +46,12 @@ class Api::V1::ReviewsController < ApplicationController
     end
 
     def get_user
-      @user = User.find(params[:user_id])
+      if params[:user_id].present?
+        @user = User.find_by(id: params[:user_id])
+      elsif params[:data].present? && params[:data].is_a?(Array)
+        user_id = params[:data].dig(0, :attributes, :user_id)
+        @user = User.find_by(id: user_id) if user_id.present?
+      end
     end
 
     # Only allow a list of trusted parameters through.

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         resources :reviews
       end
       get '/reviews', to: 'reviews#index'
+      post '/reviews', to: 'reviews#create'
     end
   end
   get '/airports', to: 'airports#index'

@@ -181,6 +181,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.9)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -209,6 +211,11 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (7.1.3)
       actionpack (= 7.1.3)
       activesupport (= 7.1.3)
@@ -291,7 +298,9 @@ DEPENDENCIES
   pg (~> 1.1)
   pry-rails
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.1.2)
+  rails_12factor
   rspec-rails
   shoulda-matchers
   simplecov

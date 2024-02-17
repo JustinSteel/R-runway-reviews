@@ -28,12 +28,16 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem 'rack-cors', require: 'rack/cors'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
+gem "factory_bot_rails"
+gem "faker"
+gem "jsonapi-serializer"
 
 gem "faraday"
 group :development, :test do
@@ -42,9 +46,6 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
   gem "launchy"
-  gem "jsonapi-serializer"
-  gem "factory_bot_rails"
-  gem "faker"
   gem "orderly"
 end
 
@@ -59,4 +60,9 @@ group :test do
   gem "webmock"
   gem "vcr"
 end
+
+group :production do
+  gem 'rails_12factor'
+end
+
 
