@@ -17,4 +17,4 @@ require 'factory_bot_rails'
 include FactoryBot::Syntax::Methods
 
 create_list(:user, 5)
-create_list(:review, 20)
+# create_list(:review, 20)
